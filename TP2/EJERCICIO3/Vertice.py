@@ -32,4 +32,4 @@ class Vertice:
         self.predecesor = predecesor
         
     def __lt__(self, otro):
-        return True
+        return self.dist < otro.dist

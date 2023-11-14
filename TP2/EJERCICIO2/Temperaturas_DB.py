@@ -11,7 +11,7 @@ class Temperaturas_DB:
     def __str__(self):
         lista=[]
         for nodo in self.mediciones:
-            lista.append([str(nodo.clave.date()), nodo.valor]) #date() retorna solo el formato fecha, no el formato hora
+            lista.append([str(nodo.clave.date()), nodo.carga_util]) #date() retorna solo el formato fecha, no el formato hora
         return str(lista)
 
     def __iter__(self):
@@ -34,9 +34,9 @@ class Temperaturas_DB:
         
         iterador = Iterador(self.mediciones,f_uno)
         for i in iterador:
-            if i.clave <= f_dos and i.clave >= f_uno:
-                if i.valor > temp_max:
-                    temp_max = i.valor
+            if i.clave <= f_dos:
+                if i.carga_util > temp_max:
+                    temp_max = i.carga_util
             else:
                 break
         return temp_max
@@ -48,8 +48,8 @@ class Temperaturas_DB:
         iterador = Iterador(self.mediciones,f_uno)
         for i in iterador:
             if i.clave <= f_dos:
-                if i.valor < temp_min:
-                    temp_min = i.valor 
+                if i.carga_util < temp_min:
+                    temp_min = i.carga_util 
             else:
                 break
         return temp_min
@@ -71,10 +71,10 @@ class Temperaturas_DB:
         lista=[]
         for i in iterador:
             if i.clave <= f_dos:
-                    lista.append((str(i.clave.date()),i.valor))
+                    lista.append((str(i.clave.date()),i.carga_util))
             else:
                 break
-        return(lista) 
+        return lista 
 
     def mostrar_cantidad_muestras(self):
         return self.tamano

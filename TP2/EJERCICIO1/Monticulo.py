@@ -18,7 +18,6 @@ class MonticuloBinario:
         self.infiltArriba(self.tamanoActual)
     
     def infiltAbajo(self, item):
-
         while(item*2) <= self.tamanoActual:
             hm = self.hijoMin(item)
             if self.listaMonticulo[item] > self.listaMonticulo[hm]:
@@ -37,7 +36,6 @@ class MonticuloBinario:
                 return item*2 + 1
 
     def eliminarMin(self):
- 
         valorExtraido = self.listaMonticulo[1] #Raiz
         self.listaMonticulo[1] = self.listaMonticulo[self.tamanoActual] #se lleva el ultimo elemento insertado temp a la raiz
         self.tamanoActual = self.tamanoActual -1

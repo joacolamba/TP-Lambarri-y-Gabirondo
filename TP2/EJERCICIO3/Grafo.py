@@ -15,9 +15,9 @@ class Grafo:
         self.lista_vertices[clave] = nuevo_vertice
         return nuevo_vertice
 
-    def obtener_vertice(self,n):
-        if n in self.lista_vertices:
-            return self.lista_vertices[n]
+    def obtener_vertice(self, clave):
+        if clave in self.lista_vertices:
+            return self.lista_vertices[clave]
         else:
             return None
 

@@ -1,4 +1,4 @@
-from Optimizacion import dijkstra_min, dijkstra_max
+from Optimizacion import costo_minimo, dijkstra_max, dijkstra_min
 from Grafo import Grafo
 from Fraccion import decimal_a_fraccion
 
@@ -33,16 +33,17 @@ for i in range(len(datos_ciudades)):
 dijkstra_max(grafo_ciudades_peso, grafo_ciudades_peso.obtener_vertice("CiudadBs.As."))
 dijkstra_min(grafo_ciudades_costo, grafo_ciudades_costo.obtener_vertice("CiudadBs.As."))
 
+
 peso_maximo = 0
 for i in grafo_ciudades_peso:
     if i.id == destino:
         peso_maximo = i.dist
 peso=decimal_a_fraccion(peso_maximo)
 
-costo_minimo = 0
+costo_minimo_total = 0
 for i in grafo_ciudades_costo:
     if i.id == destino:
-        costo_minimo = i.dist
+        costo_minimo_total = i.dist
 
 nodo_peso = grafo_ciudades_peso.obtener_vertice(destino)
 recorrido_peso = []
@@ -50,6 +51,8 @@ while nodo_peso is not None:
     recorrido_peso.append(nodo_peso.id)
     nodo_peso = nodo_peso.predecesor
 recorrido_peso.reverse()
+costo_minimo_ruta = costo_minimo(grafo_ciudades_costo, recorrido_peso)
+
 
 nodo_costo = grafo_ciudades_costo.obtener_vertice(destino)
 recorrido_costo = []
@@ -59,7 +62,9 @@ while nodo_costo is not None:
 recorrido_costo.reverse()
 
 print("Para llegar a", destino, ":")
-print("El costo mínimo de transporte es: $", costo_minimo)
+print("El costo mínimo de transporte es: $", costo_minimo_total)
 print("Y su ruta es:", recorrido_costo)
+print()
 print("El peso máximo para transportar es:", peso, "kg")
+print("El costo mínimo de transporte en la ruta con mayor carga posible es: $", costo_minimo_ruta)
 print("Y su ruta es:", recorrido_peso)

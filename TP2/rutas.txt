@@ -1,4 +1,3 @@
-CiudadBs.As.,Rufino,70,8
 CiudadBs.As.,Rufino,100,4
 Rufino,Laboulage,90,3
 Laboulage,VillaMercedes,100,8
